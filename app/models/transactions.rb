@@ -1,4 +1,4 @@
-class Transaction < ApplicationRecord
+class Transactions < ApplicationRecord
   belongs_to :user
 
   validates :currency_sent, :currency_received, :amount_sent, :amount_received, presence: true
