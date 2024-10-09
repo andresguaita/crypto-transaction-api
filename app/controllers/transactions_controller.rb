@@ -1,4 +1,4 @@
-class TransactionsController < ApplicationController
+class TransactionController < ApplicationController
   def create
     transaction = CreateTransactionService.new(current_user, transaction_params).call
 
