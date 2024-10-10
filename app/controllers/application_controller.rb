@@ -1,11 +1,10 @@
 class ApplicationController < ActionController::API
-    # Decodifica el JWT
     def decode_token
       auth_header = request.headers['Authorization']
       if auth_header
         token = auth_header.split(' ')[1]
         begin
-          JWT.decode(token, Rails.application.secrets.secret_key_base, true, algorithm: 'HS256')
+          JWT.decode(token, 'hellomars1211', true, algorithm: 'HS256')
         rescue JWT::DecodeError
           nil
         end
@@ -21,9 +20,10 @@ class ApplicationController < ActionController::API
       end
     end
   
-    # Verifica si hay un usuario autenticado
+
     def logged_in?
-      !!current_user
+      is_user_logged_in= !!current_user
+      is_user_logged_in
     end
   
     # Acción que se ejecuta antes de cualquier acción protegida

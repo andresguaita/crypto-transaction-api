@@ -1,7 +1,7 @@
 class HttpClient
 
     def self.get(url, headers: {}, params: {})
-      raise NotImplementedError, 'Este método debe ser implementado por una subclase'
+    FaradayHttpClient.get(url)
     end
   end
   

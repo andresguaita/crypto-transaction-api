@@ -5,11 +5,11 @@ class AddInitialUsers < ActiveRecord::Migration[6.1]
     password3 = BCrypt::Password.create('password789')
 
     execute <<-SQL
-      INSERT INTO users (name, email, password_digest, balance,created_at, updated_at)
+      INSERT INTO users (name, email, password_digest,created_at, updated_at)
       VALUES
-        ('John Doe', 'john.doe@example.com', '#{password1}', 1000 ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-        ('Andres Guzman', 'andres.guzman@example.com', '#{password2}', 1000 ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-        ('Diego De La Vega', 'diego.delavega@example.com', '#{password3}', 100 ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+        ('John Doe', 'john.doe@example.com', '#{password1}' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+        ('Andres Guzman', 'andres.guzman@example.com', '#{password2}' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+        ('Diego De La Vega', 'diego.delavega@example.com', '#{password3}' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
     SQL
   end
 

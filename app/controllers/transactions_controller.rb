@@ -1,17 +1,29 @@
-class TransactionController < ApplicationController
-  def create
-    transaction = CreateTransactionService.new(current_user, transaction_params).call
+class TransactionsController < ApplicationController
+  before_action :authorized
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
-    if transaction
-      render json: transaction, status: :created
+  def create
+    create_transaction = TransactionService.new(current_user, transaction_params)
+    if create_transaction.process_transaction
+      render json: create_transaction.transaction, status: :created
     else
       render json: { error: 'Insufficient balance or invalid parameters' }, status: :unprocessable_entity
     end
   end
 
   def index
-    transactions = current_user.transactions
-    render json: transactions
+
+   user = User.find_by(id: params[:user_id])
+   if user.nil?
+     return render json: { error: "User not found" }, status: :not_found
+   end
+
+   transactions = user.transactions
+   if transactions.empty?
+     return render json: { message: "No transactions found for this user", transactions: [] }, status: :ok
+   end
+ 
+   render json: transactions, status: :ok   
   end
 
   def show
@@ -23,5 +35,9 @@ class TransactionController < ApplicationController
 
   def transaction_params
     params.permit(:currency_sent, :currency_received, :amount_sent)
+  end
+
+  def record_not_found
+    render json: { error: "Transaction not found" }, status: :not_found
   end
 end
