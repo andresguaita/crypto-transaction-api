@@ -18,7 +18,7 @@ class AuthenticationService
     def encode_token(payload)
       expiration_time = 10.minutes.from_now.to_i
       payload[:exp] = expiration_time
-      JWT.encode(payload, 'hellomars1211')
+      JWT.encode(payload, ENV.fetch('AUTH_SEED'))
     end
   end
   

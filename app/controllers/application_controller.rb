@@ -4,7 +4,7 @@ class ApplicationController < ActionController::API
       if auth_header
         token = auth_header.split(' ')[1]
         begin
-          JWT.decode(token, 'hellomars1211', true, algorithm: 'HS256')
+          JWT.decode(token, ENV.fetch('AUTH_SEED'), true, algorithm: 'HS256')
         rescue JWT::DecodeError
           nil
         end
