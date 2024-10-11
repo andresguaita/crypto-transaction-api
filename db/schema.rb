@@ -18,8 +18,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_07_000000) do
     t.bigint "user_id", null: false
     t.string "currency_sent", null: false
     t.string "currency_received", null: false
-    t.decimal "amount_sent", precision: 10, scale: 2, null: false
-    t.decimal "amount_received", precision: 10, scale: 2, null: false
+    t.decimal "amount_sent", precision: 30, scale: 8, null: false
+    t.decimal "amount_received", precision: 30, scale: 8, null: false
     t.date "finalize_at", default: -> { "CURRENT_DATE" }
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

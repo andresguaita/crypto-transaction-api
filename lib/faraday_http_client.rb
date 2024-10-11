@@ -5,8 +5,6 @@ class FaradayHttpClient < HttpClient
   def self.get(url, headers: {}, params: {})
     begin
       response = Faraday.get(url, params, headers)
-      puts response
-      response
       parse_response(response)
     rescue Faraday::TimeoutError
       { error: 'Request timed out', status: 408 }

@@ -7,7 +7,7 @@ class TransactionsController < ApplicationController
     if create_transaction.process_transaction
       render json: create_transaction.transaction, status: :created
     else
-      render json: { error: 'Insufficient balance or invalid parameters' }, status: :unprocessable_entity
+      render json: { error: create_transaction.errors }, status: :unprocessable_entity
     end
   end
 

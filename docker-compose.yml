@@ -1,11 +1,28 @@
 version: '3.8'
 services:
+  app:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.  && bundle exec rails db:create && bundle exec rails db:migrate && bundle exec rails server -b '0.0.0.0' -p 3000"
+    volumes:
+      - .:/app
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+    environment:
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME_DEVELOPMENT: ${DB_NAME}
+      DB_HOST: db
+    networks:
+      - crypto_transactdb_network
+
   db:
     image: postgres:13
     environment:
       POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME_DEVELOPMENT}
+      POSTGRES_DB: ${DB_NAME}
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
