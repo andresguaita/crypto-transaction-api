@@ -102,7 +102,7 @@ Puedes usar estos datos para autenticarte y obtener un **Bearer Token**. A conti
 
 ## Endpoints disponibles
 
-**HOST PRODUCCION** `http://3.141.153.135:3000`
+**HOST PRODUCCION** `http://3.141.153.135:3000` (APP DESPLEGADA EN AWS ECS)
 
 1. **Autenticación (Login)**:
 
