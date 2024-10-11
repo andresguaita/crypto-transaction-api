@@ -102,6 +102,8 @@ Puedes usar estos datos para autenticarte y obtener un **Bearer Token**. A conti
 
 ## Endpoints disponibles
 
+**HOST PRODUCCION** `http://3.141.153.135:3000`
+
 1. **Autenticación (Login)**:
 
    - **POST** `/login`
