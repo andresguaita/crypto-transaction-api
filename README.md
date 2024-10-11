@@ -228,8 +228,8 @@ Puedes usar estos datos para autenticarte y obtener un **Bearer Token**. A conti
 
 La documentación completa de la API está disponible en la siguiente ruta:
 
-- **Swagger UI**: `http://localhost:3000/api-docs` (en local)
-- **Swagger UI**: `http://localhost:3000/api-docs` (produccion)
+- **Swagger UI**: `http://localhost:3000/api-docs`
+
 
 Desde la interfaz de Swagger UI, puedes probar cada endpoint de manera interactiva.
 
