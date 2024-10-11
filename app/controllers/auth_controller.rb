@@ -15,8 +15,7 @@ class AuthController < ApplicationController
   def register
     @user = User.new(user_params)
     if @user.save
-      token = AuthenticationService.new(@user.email, params[:password]).send(:encode_token, { user_id: @user.id })
-      render json: { user: @user, token: token }, status: :created
+      render json: { user: @user}, status: :created
     else
       render json: { error: 'Failed to create user' }, status: :unprocessable_entity
     end
