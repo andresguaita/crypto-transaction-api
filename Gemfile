@@ -68,4 +68,4 @@ group :test do
   gem 'database_cleaner-active_record'
 end
 
-gem "rspec-rails", "~> 7.0", :group => :test
+gem "rspec-rails", "~> 7.1", :group => :test
